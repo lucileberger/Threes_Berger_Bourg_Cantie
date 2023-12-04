@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Emilie Bourg / Lucile Berger / Pauline Cantie
+ * TDC
+ * 28/11/2023
  */
 package threes_jeu;
 
@@ -65,7 +66,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 270, 140));
+        getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 270, 140));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

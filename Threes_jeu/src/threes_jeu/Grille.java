@@ -10,7 +10,7 @@ package threes_jeu;
  * @author Emilie
  */
 public class Grille {
-    Cellule[][] matriceCellules;
+    Cellule[][] grillecellule;
     int nbLignes;
     int nbColonnes;
     
@@ -24,10 +24,10 @@ public class Grille {
     public Grille (int ligne, int colo){
     nbLignes=ligne;
     nbColonnes=colo;
-    matriceCellules=new Cellule[nbLignes][nbColonnes];
+    grillecellule=new Cellule[nbLignes][nbColonnes];
     for (int i=0; i<nbLignes; i++){
         for (int j=0;j<nbColonnes;j++){
-            matriceCellules[i][j]= new Cellule(36,36);
+            grillecellule[i][j]= new Cellule(36,36);
         }
     }
 }
