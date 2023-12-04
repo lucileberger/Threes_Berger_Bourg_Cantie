@@ -48,9 +48,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         endroitgrille = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        début = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(2000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         endroitgrille.setBackground(new java.awt.Color(0, 0, 0));
@@ -66,22 +67,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 270, 140));
+        getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 270, 140));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        début.setText("Commencer");
+        début.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                débutActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+        getContentPane().add(début, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void débutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_débutActionPerformed
         créer_grille(6,80,40);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        début.setVisible(false);
+    }//GEN-LAST:event_débutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,7 +121,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton début;
     private javax.swing.JPanel endroitgrille;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
