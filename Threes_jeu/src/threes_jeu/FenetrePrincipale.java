@@ -19,6 +19,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public FenetrePrincipale() {
         initComponents();
+        bas.setVisible(false);
+        haut.setVisible(false);
+        gauche.setVisible(false);
+        droite.setVisible(false);
     }
     
     public void créer_grille(int nb_case, int taille_grille, int taille_cellule){
@@ -49,6 +53,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         endroitgrille = new javax.swing.JPanel();
         début = new javax.swing.JButton();
+        haut = new javax.swing.JButton();
+        bas = new javax.swing.JButton();
+        droite = new javax.swing.JButton();
+        gauche = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(2000, 1000));
@@ -77,13 +85,38 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(début, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
 
+        haut.setText("↑");
+        haut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hautActionPerformed(evt);
+            }
+        });
+        getContentPane().add(haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 40, 40));
+
+        bas.setText("↓ ");
+        getContentPane().add(bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 40, 40));
+
+        droite.setText("→");
+        getContentPane().add(droite, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 40, 40));
+
+        gauche.setText("←");
+        getContentPane().add(gauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 40, 40));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void débutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_débutActionPerformed
-        créer_grille(6,80,40);
+        créer_grille(6,80,50);
         début.setVisible(false);
+        bas.setVisible(true);
+        haut.setVisible(true);
+        gauche.setVisible(true);
+        droite.setVisible(true);
     }//GEN-LAST:event_débutActionPerformed
+
+    private void hautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hautActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hautActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +154,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bas;
+    private javax.swing.JButton droite;
     private javax.swing.JButton début;
     private javax.swing.JPanel endroitgrille;
+    private javax.swing.JButton gauche;
+    private javax.swing.JButton haut;
     // End of variables declaration//GEN-END:variables
 }
