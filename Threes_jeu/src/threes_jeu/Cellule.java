@@ -18,7 +18,11 @@ public class Cellule extends JButton{
     int largeur;
     int longueur;
     
-
+    /**
+     * 
+     * @param larg
+     * @param longu
+     */
     public Cellule(int larg, int longu){
         Random nombre = new Random();
         valeur = nombre.nextInt(4);
@@ -30,6 +34,12 @@ public class Cellule extends JButton{
         largeur = larg;
         longueur = longu;
     }
+
+    /**
+     * Cette fonction permet d'afficher une valeur de départ sur une case
+     * Si la valeur est entre 1 et 3, on affiche la valeur sinon on laisse la case vide.
+     * @return
+     */
     @Override 
     public String toString () {
         if (etat==true){
