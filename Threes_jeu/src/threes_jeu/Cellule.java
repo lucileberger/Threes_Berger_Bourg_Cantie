@@ -5,6 +5,7 @@
  */
 package threes_jeu;
 
+import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.JButton;
 
@@ -55,4 +56,14 @@ public class Cellule extends JButton{
         }
         return null;
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        this.setText(toString());
+    
+    }
+    
+    
+    
 }
