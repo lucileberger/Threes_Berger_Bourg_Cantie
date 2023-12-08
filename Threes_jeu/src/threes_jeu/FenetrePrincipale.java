@@ -97,6 +97,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 40, 40));
 
         droite.setText("→");
+        droite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                droiteActionPerformed(evt);
+            }
+        });
         getContentPane().add(droite, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 40, 40));
 
         gauche.setText("←");
@@ -129,6 +134,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         System.out.println(grille);
         endroitgrille.repaint();
     }//GEN-LAST:event_gaucheActionPerformed
+
+    private void droiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_droiteActionPerformed
+        grille.deplacementdroite();
+        System.out.println(grille);
+        endroitgrille.repaint();
+    }//GEN-LAST:event_droiteActionPerformed
 
     /**
      * @param args the command line arguments

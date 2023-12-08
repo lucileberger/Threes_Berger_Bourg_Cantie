@@ -15,7 +15,6 @@ import javax.swing.JButton;
  */
 public class Cellule extends JButton{
     int valeur;
-    boolean etat;
     int largeur;
     int longueur;
     
@@ -29,11 +28,6 @@ public class Cellule extends JButton{
     public Cellule(int larg, int longu){
         Random nombre = new Random();
         valeur = nombre.nextInt(4);
-        if (valeur==0){
-            etat=false;
-        } else {
-            etat=true;
-        }
         largeur = larg;
         longueur = longu;
     }
@@ -44,8 +38,7 @@ public class Cellule extends JButton{
      * @return
      */
     @Override 
-    public String toString () {
-        
+    public String toString () {    
             if (valeur==1){
                 return "1";
             } else if (valeur==2){
@@ -53,12 +46,10 @@ public class Cellule extends JButton{
             } else if (valeur==3){
                 return "3";
             }
-        
         return " ";
     }
 
     public String toString2 () {
-        
             if (valeur==1){
                 return "1";
             } else if (valeur==2){

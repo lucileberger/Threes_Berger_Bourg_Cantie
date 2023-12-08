@@ -39,36 +39,36 @@ public class Grille {
        }
        // un trou a été découvert
        if (j != nbColonnes && grillecellule[i][j].valeur ==0)  {
-           System.out.println(" trou découvert " + i + ","+j);
+           //System.out.println(" trou découvert " + i + ","+j);
          for (int k = j; k < nbColonnes-1; k++) {
-             System.out.println("décalage numero "+ k);
+             //System.out.println("décalage numero "+ k);
              grillecellule[i][k].valeur = grillecellule[i][k+1].valeur;
-             System.out.println(this);
+             //System.out.println(this);
          }    
         grillecellule[i][nbColonnes-1].valeur = 0;
        } 
-       
     }
-        
-        /*for (int j=1; j<nbColonnes; j++){
-        for (int i=0;i<nbLignes;i++){
-            if (fusionnable(grillecellule[i][j], grillecellule[i][j-1])==true){
-                grillecellule[i][j-1].valeur += grillecellule[i][j].valeur;
-                grillecellule[i][j].valeur=0;
-            }
-        }
-    }*/
     }
+    
     public void deplacementdroite(){
-    for (int j=nbColonnes-1; j>=0; j--){
-        for (int i=0;i<nbLignes;i++){
-            if (fusionnable(grillecellule[i][j], grillecellule[i][j+1])==true){
-                grillecellule[i][j+1].valeur = grillecellule[i][j].valeur;
-                grillecellule[i][j].valeur=0;
-            }
-        }
+    for (int i=0;i<nbLignes;i++){
+        int j =0;
+       while (j >= 0 && grillecellule[i][j].valeur !=0) {
+          j--;
+       }
+       // un trou a été découvert
+       if (j != nbColonnes && grillecellule[i][j].valeur ==0)  {
+           //System.out.println(" trou découvert " + i + ","+j);
+         for (int k = j; k > 0; k--) {
+             //System.out.println("décalage numero "+ k);
+             grillecellule[i][k].valeur = grillecellule[i][k-1].valeur;
+             //System.out.println(this);
+         }    
+        grillecellule[i][0].valeur = 0;
+       } 
     }
     }
+    
     public boolean fusionnable(Cellule cellu1, Cellule cellu2){
         if (cellu1.valeur == cellu2.valeur && cellu1.valeur!=1 && cellu1.valeur!=2){
             return true;
