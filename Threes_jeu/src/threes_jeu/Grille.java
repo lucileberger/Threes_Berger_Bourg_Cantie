@@ -17,7 +17,7 @@ public class Grille {
     /**
      * Permet de créer la grille avec le nombre de
      * colonnes et de lignes voulues et ajoute 
-     * une cellule dans chaque case 
+     * une cellule dans chaque case  
      * @param ligne nombre de lignes voulues
      * @param colo nombre de colonnes voulues
      */
