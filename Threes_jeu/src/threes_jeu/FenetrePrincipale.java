@@ -100,6 +100,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(droite, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 40, 40));
 
         gauche.setText("←");
+        gauche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gaucheActionPerformed(evt);
+            }
+        });
         getContentPane().add(gauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 40, 40));
 
         pack();
@@ -117,6 +122,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void hautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hautActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hautActionPerformed
+
+    private void gaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaucheActionPerformed
+        grille.deplacementgauche();
+    }//GEN-LAST:event_gaucheActionPerformed
 
     /**
      * @param args the command line arguments
