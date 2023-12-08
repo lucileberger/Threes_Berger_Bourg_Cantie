@@ -36,8 +36,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         for (int i=0; i < nbLignes; i++) { 
             for (int j=0; j < nbColonnes; j++ ) {
-                Cellule bouton_cellule = new Cellule(36, 36);
-                endroitgrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+               // Cellule bouton_cellule = new Cellule(36, 36);
+                endroitgrille.add(grille.grillecellule[i][j]); // ajout au Jpanel PanneauGrille
             }
         }
     }
@@ -112,6 +112,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private void débutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_débutActionPerformed
         créer_grille(6,80,50);
+        System.out.println(grille);
         début.setVisible(false);
         bas.setVisible(true);
         haut.setVisible(true);
@@ -125,6 +126,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private void gaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaucheActionPerformed
         grille.deplacementgauche();
+        System.out.println(grille);
+        endroitgrille.repaint();
     }//GEN-LAST:event_gaucheActionPerformed
 
     /**

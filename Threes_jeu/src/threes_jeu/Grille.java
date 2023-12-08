@@ -32,14 +32,32 @@ public class Grille {
     }
 }
     public void deplacementgauche(){
-    for (int j=1; j<nbColonnes; j++){
+    for (int i=0;i<nbLignes;i++){
+        int j =0;
+       while (j < nbColonnes && grillecellule[i][j].valeur !=0) {
+          j++;
+       }
+       // un trou a été découvert
+       if (j != nbColonnes && grillecellule[i][j].valeur ==0)  {
+           System.out.println(" trou découvert " + i + ","+j);
+         for (int k = j; k < nbColonnes-1; k++) {
+             System.out.println("décalage numero "+ k);
+             grillecellule[i][k].valeur = grillecellule[i][k+1].valeur;
+             System.out.println(this);
+         }    
+        grillecellule[i][nbColonnes-1].valeur = 0;
+       } 
+       
+    }
+        
+        /*for (int j=1; j<nbColonnes; j++){
         for (int i=0;i<nbLignes;i++){
             if (fusionnable(grillecellule[i][j], grillecellule[i][j-1])==true){
                 grillecellule[i][j-1].valeur += grillecellule[i][j].valeur;
                 grillecellule[i][j].valeur=0;
             }
         }
-    }
+    }*/
     }
     public void deplacementdroite(){
     for (int j=nbColonnes-1; j>=0; j--){
@@ -61,4 +79,19 @@ public class Grille {
         }
         return false;
     } 
+
+    @Override
+    public String toString() {
+        String result = "\n\n";
+        for (int i=0;i<nbLignes;i++){
+           for (int j=0; j<nbColonnes; j++){
+              result +=grillecellule[i][j].toString2();  
+           }
+           result += "\n";
+        }
+        return result;
+        
+    }
+
+
 }
