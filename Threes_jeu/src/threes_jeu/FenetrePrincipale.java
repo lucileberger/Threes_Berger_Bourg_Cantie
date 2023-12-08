@@ -5,7 +5,10 @@
  */
 package threes_jeu;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +44,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         }
     }
+    
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +89,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 débutActionPerformed(evt);
             }
         });
-        getContentPane().add(début, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
+        getContentPane().add(début, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
 
         haut.setText("↑");
         haut.addActionListener(new java.awt.event.ActionListener() {
