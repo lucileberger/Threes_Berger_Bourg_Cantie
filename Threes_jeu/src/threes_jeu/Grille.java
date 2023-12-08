@@ -31,18 +31,41 @@ public class Grille {
         }
     }
 }
+    public void deplacementgauche(){
+    for (int i=0; i<nbColonnes; i++){
+        for (int j=0;j<nbLignes;j++){
+            if (grillecellule[i-1][j].valeur==0) {
+                grillecellule[i-1][j].valeur = grillecellule[i][j].valeur;
+            } else if (grillecellule[i-1][j].valeur==grillecellule[i][j].valeur && grillecellule[i][j].valeur!=1 && grillecellule[i][j].valeur!=2){
+                grillecellule[i-1][j].valeur = grillecellule[i-1][j].valeur+grillecellule[i][j].valeur;
+                grillecellule[i][j].valeur=0;
+            } else if (grillecellule[i][j].valeur==1 && grillecellule[i-1][j].valeur==2){
+                grillecellule[i-1][j].valeur = grillecellule[i-1][j].valeur+grillecellule[i][j].valeur;
+                grillecellule[i][j].valeur=0;
+            } else if (grillecellule[i][j].valeur==2 && grillecellule[i-1][j].valeur==1){
+                grillecellule[i-1][j].valeur = grillecellule[i-1][j].valeur+grillecellule[i][j].valeur;
+                grillecellule[i][j].valeur=0;
+                    }
+        }
+    }
+    }
     public void deplacementdroite(){
     for (int i=0; i<nbColonnes; i++){
         for (int j=0;j<nbLignes;j++){
             if (grillecellule[i-1][j].valeur==0) {
                 grillecellule[i-1][j].valeur = grillecellule[i][j].valeur;
-            } else if (grillecellule[i-1][j].valeur==grillecellule[i][j].valeur){
-                
-            }
+            } else if (grillecellule[i-1][j].valeur==grillecellule[i][j].valeur && grillecellule[i][j].valeur!=1 && grillecellule[i][j].valeur!=2){
+                grillecellule[i-1][j].valeur = grillecellule[i-1][j].valeur+grillecellule[i][j].valeur;
+                grillecellule[i][j].valeur=0;
+            } else if (grillecellule[i][j].valeur==1 && grillecellule[i-1][j].valeur==2){
+                grillecellule[i-1][j].valeur = grillecellule[i-1][j].valeur+grillecellule[i][j].valeur;
+                grillecellule[i][j].valeur=0;
+            } else if (grillecellule[i][j].valeur==2 && grillecellule[i-1][j].valeur==1){
+                grillecellule[i-1][j].valeur = grillecellule[i-1][j].valeur+grillecellule[i][j].valeur;
+                grillecellule[i][j].valeur=0;
+                    }
         }
     }
     }
-    public void addition(){
-        
-    }
+    
 }
