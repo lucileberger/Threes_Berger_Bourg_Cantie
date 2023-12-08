@@ -19,7 +19,9 @@ public class Cellule extends JButton{
     int longueur;
     
     /**
-     * 
+     * Cette fonction crée une cellule de dimension defini en paramètre
+     * La valeur initiale dans la cellule est aléatoire entre 0 et 3
+     * cependant si la valeur aléatoire est 0, la cellule reste vide.
      * @param larg
      * @param longu
      */
@@ -36,7 +38,7 @@ public class Cellule extends JButton{
     }
 
     /**
-     * Cette fonction permet d'afficher une valeur de départ sur une case
+     * Cette fonction permet d'afficher une valeur de départ sur une cellule
      * Si la valeur est entre 1 et 3, on affiche la valeur sinon on laisse la case vide.
      * @return
      */
