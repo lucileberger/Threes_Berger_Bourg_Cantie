@@ -31,4 +31,18 @@ public class Grille {
         }
     }
 }
+    public void deplacementdroite(){
+    for (int i=0; i<nbColonnes; i++){
+        for (int j=0;j<nbLignes;j++){
+            if (grillecellule[i-1][j].valeur==0) {
+                grillecellule[i-1][j].valeur = grillecellule[i][j].valeur;
+            } else if (grillecellule[i-1][j].valeur==grillecellule[i][j].valeur){
+                
+            }
+        }
+    }
+    }
+    public void addition(){
+        
+    }
 }
