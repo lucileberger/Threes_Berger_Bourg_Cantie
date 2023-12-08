@@ -67,5 +67,10 @@ public class Grille {
         }
     }
     }
-    
+    public boolean fusionnable(Cellule cellu1, Cellule cellu2){
+        if (cellu1.valeur == cellu2.valeur && cellu1.valeur!=1 && cellu1.valeur!=2){
+            return true;
+        } 
+        return false;
+    } 
 }
