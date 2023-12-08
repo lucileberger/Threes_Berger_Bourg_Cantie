@@ -45,7 +45,7 @@ public class Cellule extends JButton{
      */
     @Override 
     public String toString () {
-        if (etat==true){
+        
             if (valeur==1){
                 return "1";
             } else if (valeur==2){
@@ -53,8 +53,21 @@ public class Cellule extends JButton{
             } else if (valeur==3){
                 return "3";
             }
-        }
-        return null;
+        
+        return " ";
+    }
+
+    public String toString2 () {
+        
+            if (valeur==1){
+                return "1";
+            } else if (valeur==2){
+                return "2";
+            } else if (valeur==3){
+                return "3";
+            }
+        
+        return "0";
     }
 
     @Override
