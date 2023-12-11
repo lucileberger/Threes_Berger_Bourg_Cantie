@@ -5,6 +5,8 @@
  */
 package threes_jeu;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.JButton;
@@ -30,8 +32,24 @@ public class Cellule extends JButton{
         valeur = nombre.nextInt(4);
         largeur = larg;
         longueur = longu;
+        
+        this.setBackground(new Color(222, 140, 194));
+
+        if (valeur == 1) {
+        this.setBackground(new Color(0, 0, 0)); // Rouge pour la valeur 1
+    } else if (valeur == 2) {
+        this.setBackground(new Color(0, 0, 255)); // Bleu pour la valeur 2
+    } else if (valeur == 3) {
+        this.setBackground(new Color(255, 0, 0)); // Rouge pour la valeur 3
+    }
+   
+    Font font = new Font("Arial", Font.BOLD | Font.ITALIC, 15); 
+    this.setFont(font);
+    this.setForeground(Color.DARK_GRAY);
+       
     }
 
+    
     /**
      * Cette fonction permet d'afficher une valeur de départ sur une cellule
      * Si la valeur est entre 1 et 3, on affiche la valeur sinon on laisse la case vide.

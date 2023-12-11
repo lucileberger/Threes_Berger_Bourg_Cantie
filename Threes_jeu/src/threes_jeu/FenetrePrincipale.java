@@ -20,13 +20,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     /**
      * Creates new form FenetrePrincipale
      */
-    public FenetrePrincipale() {
+      public FenetrePrincipale() {
         initComponents();
-        bas.setVisible(false);
-        haut.setVisible(false);
-        gauche.setVisible(false);
-        droite.setVisible(false);
+        setTitle("Bienvenue dans le jeu Threes!");
+        créer_grille(5,80,50);
+        System.out.println(grille);
+        setLocationRelativeTo(null);
+        setSize(800, 500);
+        
+        
+        haut.setBackground(new Color(136, 211, 229));
+        
+     bas.setBackground(new Color(136, 211, 229));
+     gauche.setBackground(new Color(136, 211, 229));
+     droite.setBackground(new Color(136, 211, 229)); 
     }
+
     
     public void créer_grille(int nb_case, int taille_grille, int taille_cellule){
         int nbLignes = nb_case;
@@ -58,7 +67,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         endroitgrille = new javax.swing.JPanel();
-        début = new javax.swing.JButton();
         haut = new javax.swing.JButton();
         bas = new javax.swing.JButton();
         droite = new javax.swing.JButton();
@@ -83,14 +91,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 270, 140));
 
-        début.setText("Commencer");
-        début.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                débutActionPerformed(evt);
-            }
-        });
-        getContentPane().add(début, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
-
         haut.setText("↑");
         haut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +100,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 40, 40));
 
         bas.setText("↓ ");
+        bas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                basActionPerformed(evt);
+            }
+        });
         getContentPane().add(bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 40, 40));
 
         droite.setText("→");
@@ -121,18 +126,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void débutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_débutActionPerformed
-        créer_grille(6,80,50);
-        System.out.println(grille);
-        début.setVisible(false);
-        bas.setVisible(true);
-        haut.setVisible(true);
-        gauche.setVisible(true);
-        droite.setVisible(true);
-    }//GEN-LAST:event_débutActionPerformed
-
     private void hautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hautActionPerformed
-        // TODO add your handling code here:
+        grille.deplacementHaut();
+        System.out.println(grille);
+        endroitgrille.repaint();
     }//GEN-LAST:event_hautActionPerformed
 
     private void gaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaucheActionPerformed
@@ -142,10 +139,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }//GEN-LAST:event_gaucheActionPerformed
 
     private void droiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_droiteActionPerformed
-        grille.deplacementdroite();
+        grille.deplacementDroite();
         System.out.println(grille);
         endroitgrille.repaint();
     }//GEN-LAST:event_droiteActionPerformed
+
+    private void basActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basActionPerformed
+        grille.deplacementBas();
+        System.out.println(grille);
+        endroitgrille.repaint();
+    }//GEN-LAST:event_basActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,7 +188,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bas;
     private javax.swing.JButton droite;
-    private javax.swing.JButton début;
     private javax.swing.JPanel endroitgrille;
     private javax.swing.JButton gauche;
     private javax.swing.JButton haut;
