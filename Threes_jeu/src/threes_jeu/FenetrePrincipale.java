@@ -54,6 +54,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         }
     }
     
+    /*public void couleurs () {
+        
+         if (valeur == 1) {
+        this.setBackground(new Color(244, 0, 0)); 
+    } else if (valeur == 2) {
+        this.setBackground(new Color(0, 0, 255)); 
+    } else if (valeur == 3) {
+        this.setBackground(new Color(255, 0, 0)); 
+    }
+    }*/
 
 
 
@@ -133,7 +143,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }//GEN-LAST:event_hautActionPerformed
 
     private void gaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaucheActionPerformed
-        grille.deplacementgauche();
+        grille.deplacementGauche();
         System.out.println(grille);
         endroitgrille.repaint();
     }//GEN-LAST:event_gaucheActionPerformed
