@@ -35,8 +35,8 @@ public class Grille {
 
     public void deplacementGauche() {
         boolean fusion;
-        fusion = false;
         for (int i = 0; i < nbLignes; i++) {
+            fusion = false;
             int j = 0;
             while (j < nbColonnes && grillecellule[i][j].valeur != 0 && fusion==false) {
                 if (j< nbColonnes-1 && fusionnable(grillecellule[i][j], grillecellule[i][j + 1])){
