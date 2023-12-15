@@ -143,9 +143,14 @@ public class Grille {
     }
 
     public void deplacementBas() {
+        boolean fusion;
         for (int j = 0; j < nbColonnes; j++) {
+            fusion = false;
             int i = nbLignes - 1;
             while (i > 0 && grillecellule[i][j].valeur != 0) {
+                if (i > 1 && fusionnable(grillecellule[i][j], grillecellule[i - 1][j])){
+                    fusion = true;
+                }
                 i--;
             }
             if (i != 0 && grillecellule[i][j].valeur == 0) {
@@ -156,6 +161,19 @@ public class Grille {
                     //System.out.println(this);
                 }
                 grillecellule[0][j].valeur = 0;
+            }
+            if (fusion == true) {
+                int f = nbLignes-1;
+                while (f > 1 && fusionnable(grillecellule[f][j], grillecellule[f-1][j]) == false) {
+                    f--;
+                }
+                if (f > 1 && fusionnable(grillecellule[f][j], grillecellule[f-1][j]) == true) {
+                    System.out.println(" fusionnable " + f + "," + j);
+                    for (int l = f; l > 1; l--) {
+                        grillecellule[l][j].valeur += grillecellule[l-1][j].valeur;
+                        grillecellule[l-1][j].valeur = 0;
+                    }
+                }
             }
         }
     }
