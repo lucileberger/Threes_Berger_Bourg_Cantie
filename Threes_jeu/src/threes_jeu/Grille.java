@@ -107,9 +107,14 @@ public class Grille {
     }
 
     public void deplacementHaut() {
+        boolean fusion;
         for (int j = 0; j < nbColonnes; j++) {
+            fusion=false;
             int i = 0;
             while (i < nbLignes - 1 && grillecellule[i][j].valeur != 0) {
+                if (i < nbLignes - 1 && fusionnable(grillecellule[i][j], grillecellule[i + 1][j])){
+                    fusion = true;
+                }
                 i++;
             }
             if (i != nbLignes - 1 && grillecellule[i][j].valeur == 0) {
@@ -121,7 +126,19 @@ public class Grille {
                 }
                 grillecellule[nbLignes - 1][j].valeur = 0;
             }
-
+            if (fusion == true) {
+                int f = 0;
+                while (f < nbLignes-1 && fusionnable(grillecellule[f][j], grillecellule[f+1][j]) == false) {
+                    f++;
+                }
+                if (f<nbLignes-1 && fusionnable(grillecellule[f][j], grillecellule[f+1][j]) == true) {
+                    System.out.println(" fusionnable " + f + "," + j);
+                    for (int l = f; l < nbLignes - 1; l++) {
+                        grillecellule[l][j].valeur += grillecellule[l+1][j].valeur;
+                        grillecellule[l+1][j].valeur = 0;
+                    }
+                }
+            }
         }
     }
 
@@ -154,23 +171,6 @@ public class Grille {
         return false;
     }
 
-    public void fusion() {
-        for (int j = 0; j < nbColonnes; j++) {
-            int i = nbLignes - 1;
-            while (i > 0 && grillecellule[i][j].valeur != 0) {
-                i--;
-            }
-            if (i != 0 && grillecellule[i][j].valeur == 0) {
-                //System.out.println("trou découvert " + i + "," + j);
-                for (int k = i; k > 0; k--) {
-                    //System.out.println("décalage numero " + k);
-                    grillecellule[k][j].valeur = grillecellule[k - 1][j].valeur;
-                    //System.out.println(this);
-                }
-                grillecellule[0][j].valeur = 0;
-            }
-        }
-    }
 
     @Override
     public String toString() {
