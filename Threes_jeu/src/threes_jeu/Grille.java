@@ -71,9 +71,14 @@ public class Grille {
     }
 
     public void deplacementDroite() {
+        boolean fusion;
         for (int i = 0; i < nbLignes; i++) {
+            fusion=false;
             int j = nbColonnes - 1;
             while (j > 0 && grillecellule[i][j].valeur != 0) {
+                if (j > 1 && fusionnable(grillecellule[i][j], grillecellule[i][j - 1])){
+                    fusion = true;
+                }
                 j--;
             }
             if (j != 0 && grillecellule[i][j].valeur == 0) {
@@ -84,6 +89,19 @@ public class Grille {
                     //System.out.println(this);
                 }
                 grillecellule[i][0].valeur = 0;
+            }
+            if (fusion == true) {
+                int f = nbColonnes-1;
+                while (f > 1 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == false) {
+                    f--;
+                }
+                if (f>1 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == true) {
+                    System.out.println(" fusionnable " + i + "," + f);
+                    for (int l = f; l > 1; l--) {
+                        grillecellule[i][l].valeur += grillecellule[i][l - 1].valeur;
+                        grillecellule[i][l - 1].valeur = 0;
+                    }
+                }
             }
         }
     }
