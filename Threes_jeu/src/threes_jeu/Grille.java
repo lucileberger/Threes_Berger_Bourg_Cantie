@@ -54,10 +54,16 @@ public class Grille {
                     grillecellule[i][k].valeur = grillecellule[i][k + 1].valeur;
                     //System.out.println(this);
                 }
-                grillecellule[i][nbColonnes - 1].valeur = 0;
+                grillecellule[i][nbColonnes - 1].valeur = valeur_alea();
             }
             if (fusion == true) {
-                int f = 0;
+                fusionGauche(i);
+            }
+        }
+    }
+
+    public void fusionGauche(int i){
+        int f = 0;
                 while (f < nbColonnes - 1 && fusionnable(grillecellule[i][f], grillecellule[i][f + 1]) == false) {
                     f++;
                 }
@@ -68,10 +74,9 @@ public class Grille {
                         grillecellule[i][l + 1].valeur = 0;
                     }
                 }
-            }
-        }
     }
-
+    
+    
     public void deplacementDroite() {
         boolean fusion;
         for (int i = 0; i < nbLignes; i++) {
@@ -90,11 +95,17 @@ public class Grille {
                     grillecellule[i][k].valeur = grillecellule[i][k - 1].valeur;
                     //System.out.println(this);
                 }
-                grillecellule[i][0].valeur = 0;
+                grillecellule[i][0].valeur = valeur_alea();
             }
             if (fusion == true) {
-                int f = nbColonnes - 1;
-                while (f > 1 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == false) {
+                fusionDroite(i);
+            }
+        }
+    }
+
+    public void fusionDroite(int i){
+        int f = nbColonnes - 1;
+                while (f > 0 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == false) {
                     f--;
                 }
                 if (f > 1 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == true) {
@@ -104,10 +115,9 @@ public class Grille {
                         grillecellule[i][l - 1].valeur = 0;
                     }
                 }
-            }
-        }
     }
-
+    
+    
     public void deplacementHaut() {
         boolean fusion;
         for (int j = 0; j < nbColonnes; j++) {
@@ -126,24 +136,30 @@ public class Grille {
                     grillecellule[k][j].valeur = grillecellule[k + 1][j].valeur;
                     //System.out.println(this);
                 }
-                grillecellule[nbLignes - 1][j].valeur = 0;
+                grillecellule[nbLignes - 1][j].valeur = valeur_alea();
             }
             if (fusion == true) {
-                int f = 0;
-                while (f < nbLignes - 1 && fusionnable(grillecellule[f][j], grillecellule[f + 1][j]) == false) {
-                    f++;
-                }
-                if (f < nbLignes - 1 && fusionnable(grillecellule[f][j], grillecellule[f + 1][j]) == true) {
-                    System.out.println(" fusionnable " + f + "," + j);
-                    for (int l = f; l < nbLignes - 1; l++) {
-                        grillecellule[l][j].valeur += grillecellule[l + 1][j].valeur;
-                        grillecellule[l + 1][j].valeur = 0;
-                    }
-                }
+                fusionHaut(j);
             }
         }
     }
 
+    public void fusionHaut(int num_colo){
+        int f = 0;
+                while (f < nbLignes - 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f + 1][num_colo]) == false) {
+                    f++;
+                }
+                if (f < nbLignes - 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f + 1][num_colo]) == true) {
+                    System.out.println(" fusionnable " + f + "," + num_colo);
+                    for (int l = f; l < nbLignes - 1; l++) {
+                        grillecellule[l][num_colo].valeur += grillecellule[l + 1][num_colo].valeur;
+                        grillecellule[l + 1][num_colo].valeur = 0;
+                    }
+                }
+    }
+    
+    
+    
     public void deplacementBas() {
         boolean fusion;
         for (int j = 0; j < nbColonnes; j++) {
@@ -162,24 +178,29 @@ public class Grille {
                     grillecellule[k][j].valeur = grillecellule[k - 1][j].valeur;
                     //System.out.println(this);
                 }
-                grillecellule[0][j].valeur = 0;
+                grillecellule[0][j].valeur = valeur_alea();
             }
             if (fusion == true) {
-                int f = nbLignes - 1;
-                while (f > 1 && fusionnable(grillecellule[f][j], grillecellule[f - 1][j]) == false) {
-                    f--;
-                }
-                if (f > 1 && fusionnable(grillecellule[f][j], grillecellule[f - 1][j]) == true) {
-                    System.out.println(" fusionnable " + f + "," + j);
-                    for (int l = f; l > 1; l--) {
-                        grillecellule[l][j].valeur += grillecellule[l - 1][j].valeur;
-                        grillecellule[l - 1][j].valeur = 0;
-                    }
-                }
+                fusionBas(j);
             }
         }
     }
 
+    public void fusionBas(int num_colo){
+        int f = nbLignes - 1;
+                while (f > 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == false) {
+                    f--;
+                }
+                if (f > 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == true) {
+                    System.out.println(" fusionnable " + f + "," + num_colo);
+                    for (int l = f; l > 1; l--) {
+                        grillecellule[l][num_colo].valeur += grillecellule[l - 1][num_colo].valeur;
+                        grillecellule[l - 1][num_colo].valeur = 0;
+                    }
+                }
+    }
+    
+    
     public boolean fusionnable(Cellule cellu1, Cellule cellu2) {
         if (cellu1.valeur == cellu2.valeur && cellu1.valeur != 1 && cellu1.valeur != 2 && cellu1.valeur != 0) {
             return true;
@@ -194,7 +215,6 @@ public class Grille {
     public int valeur_alea (){
         Random nb = new Random();
         int val = nb.nextInt(4);
-        val= val*nb.nextInt(2);
         val= val*nb.nextInt(2);
         return val;
     }
