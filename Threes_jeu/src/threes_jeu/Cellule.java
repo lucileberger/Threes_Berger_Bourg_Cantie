@@ -68,12 +68,27 @@ public class Cellule extends JButton{
         return "0";
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-        this.setText(toString());
-    
+  @Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+
+   switch (valeur) {
+        case 1:
+            setBackground(new Color(255, 0, 0)); 
+            break;
+        case 2:
+            setBackground(new Color(0, 255, 0)); 
+            break;
+        case 3:
+            setBackground(new Color(0, 0, 255)); 
+            break;
+        default:
+            setBackground(new Color(222, 140, 194)); 
     }
+
+    this.setText(toString());
+}
+
     
     
     
