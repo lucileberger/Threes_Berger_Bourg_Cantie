@@ -30,7 +30,7 @@ public class Grille {
         grillecellule = new Cellule[nbLignes][nbColonnes];
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                grillecellule[i][j] = new Cellule(40, 40);
+                grillecellule[i][j] = new Cellule(48, 48);
             }
         }
     }

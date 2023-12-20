@@ -25,7 +25,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
       public FenetrePrincipale() {
         initComponents();
         setTitle("Bienvenue dans le jeu Threes!");
-        créer_grille(5,80,50);
+        créer_grille(4,100,100);
         System.out.println(grille);
         setLocationRelativeTo(null);
         setSize(800, 500);
