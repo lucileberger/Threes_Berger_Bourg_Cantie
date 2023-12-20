@@ -8,6 +8,8 @@ package threes_jeu;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +36,25 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      bas.setBackground(new Color(136, 211, 229));
      gauche.setBackground(new Color(136, 211, 229));
      droite.setBackground(new Color(136, 211, 229)); 
+     
+     
+     addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    hautActionPerformed(null);
+                } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    gaucheActionPerformed(null);
+                } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    droiteActionPerformed(null);
+                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    basActionPerformed(null);
+                }
+            }
+        });
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+    
     }
 
     
@@ -48,22 +69,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         for (int i=0; i < nbLignes; i++) { 
             for (int j=0; j < nbColonnes; j++ ) {
-               // Cellule bouton_cellule = new Cellule(36, 36);
-                endroitgrille.add(grille.grillecellule[i][j]); // ajout au Jpanel PanneauGrille
+                endroitgrille.add(grille.grillecellule[i][j]); 
             }
         }
     }
     
-    /*public void couleurs () {
-        
-         if (valeur == 1) {
-        this.setBackground(new Color(244, 0, 0)); 
-    } else if (valeur == 2) {
-        this.setBackground(new Color(0, 0, 255)); 
-    } else if (valeur == 3) {
-        this.setBackground(new Color(255, 0, 0)); 
+    
+    public void fleches (){
+        String message =
+        "<html><body style='width: 300px; padding: 10px;'>" +
+                "<h1 style='color: #1E90FF; font-style: italic;'>Utilisez les flèches sur l'interface graphique ou sur le clavier pour jouer.</h1>" +
+                
+                "</body></html>";
+
+JOptionPane.showMessageDialog(this,
+        message,
+        "Utilisation des flèches",
+       JOptionPane.INFORMATION_MESSAGE);
+
     }
-    }*/
+
 
 
 
@@ -81,6 +106,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         bas = new javax.swing.JButton();
         droite = new javax.swing.JButton();
         gauche = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(2000, 1000));
@@ -132,6 +159,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 40, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, -1, -1));
+
+        jButton1.setText("utilisation des flèches ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,6 +195,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         System.out.println(grille);
         endroitgrille.repaint();
     }//GEN-LAST:event_basActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.fleches();
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,5 +242,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel endroitgrille;
     private javax.swing.JButton gauche;
     private javax.swing.JButton haut;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
