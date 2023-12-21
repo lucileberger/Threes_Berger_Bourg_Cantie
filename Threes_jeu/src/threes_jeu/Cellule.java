@@ -39,7 +39,7 @@ public class Cellule extends JButton{
    
     Font font = new Font("Arial", Font.BOLD | Font.ITALIC, 15); 
     this.setFont(font);
-    this.setForeground(Color.DARK_GRAY);
+    this.setForeground(new Color(255,255,255));
        
     }
 
@@ -66,30 +66,42 @@ public class Cellule extends JButton{
             }
         
         return "0";
-    }
-
-  @Override
+    }  
+    
+     @Override
 protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-
+if (valeur == 0){
+    setBackground(Color.WHITE);
+}
+else {
    switch (valeur) {
         case 1:
-            setBackground(new Color(255, 0, 0)); 
+            setBackground(new Color(229, 156, 156)); 
             break;
         case 2:
-            setBackground(new Color(0, 255, 0)); 
+            setBackground(new Color(229, 156, 163)); 
             break;
         case 3:
-            setBackground(new Color(0, 0, 255)); 
+            setBackground(new Color(229, 156, 200)); 
             break;
-        default:
-            setBackground(new Color(222, 140, 194)); 
+        case 6 :
+            setBackground(new Color(222,156,229));
+            break;
+        case 12 :
+            setBackground(new Color(213,119,213));
+            break;   
+        case 24 : 
+            setBackground(new Color (151,63,116));
+            break;
+        case 48 :
+             setBackground(new Color (142,63,151));
+            break;
+            
+            
     }
 
     this.setText(toString());
 }
-
-    
-    
-    
+}
 }
