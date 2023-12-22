@@ -31,11 +31,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setSize(800, 500);
         
         
-        haut.setBackground(new Color(136, 211, 229));  
-     bas.setBackground(new Color(136, 211, 229));
-     gauche.setBackground(new Color(136, 211, 229));
-     droite.setBackground(new Color(136, 211, 229)); 
-     
+ 
      
      addKeyListener(new KeyAdapter() {
             @Override
@@ -109,55 +105,62 @@ JOptionPane.showMessageDialog(this,
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(2000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        endroitgrille.setBackground(new java.awt.Color(0, 0, 0));
+        endroitgrille.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout endroitgrilleLayout = new javax.swing.GroupLayout(endroitgrille);
         endroitgrille.setLayout(endroitgrilleLayout);
         endroitgrilleLayout.setHorizontalGroup(
             endroitgrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         endroitgrilleLayout.setVerticalGroup(
             endroitgrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 270, 140));
 
+        haut.setBackground(new java.awt.Color(204, 204, 255));
+        haut.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         haut.setText("↑");
         haut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hautActionPerformed(evt);
             }
         });
-        getContentPane().add(haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 40, 40));
+        getContentPane().add(haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 50, 50));
 
+        bas.setBackground(new java.awt.Color(204, 204, 255));
+        bas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         bas.setText("↓ ");
         bas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 basActionPerformed(evt);
             }
         });
-        getContentPane().add(bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 40, 40));
+        getContentPane().add(bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 50, 50));
 
+        droite.setBackground(new java.awt.Color(204, 204, 255));
+        droite.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         droite.setText("→");
         droite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 droiteActionPerformed(evt);
             }
         });
-        getContentPane().add(droite, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 40, 40));
+        getContentPane().add(droite, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 50, 50));
 
+        gauche.setBackground(new java.awt.Color(204, 204, 255));
+        gauche.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         gauche.setText("←");
         gauche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gaucheActionPerformed(evt);
             }
         });
-        getContentPane().add(gauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 40, 40));
+        getContentPane().add(gauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 50, 50));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, -1, -1));
 
         jButton1.setText("utilisation des flèches ");
@@ -189,16 +192,16 @@ JOptionPane.showMessageDialog(this,
         endroitgrille.repaint();
     }//GEN-LAST:event_droiteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.fleches();
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void basActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basActionPerformed
         grille.deplacementBas();
         System.out.println(grille);
         endroitgrille.repaint();
     }//GEN-LAST:event_basActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.fleches();
-     
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
