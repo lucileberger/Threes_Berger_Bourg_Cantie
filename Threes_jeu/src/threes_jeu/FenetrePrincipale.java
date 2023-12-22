@@ -30,7 +30,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(800, 500);
         
-        
  
      
      addKeyListener(new KeyAdapter() {
@@ -52,7 +51,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     }
 
-    
+    /**
+     * Permet la création de la grille dans la fenetre 
+     * @param nb_case par lignes et colonnes
+     * @param taille_grille
+     * @param taille_cellule
+     */
     public void créer_grille(int nb_case, int taille_grille, int taille_cellule){
         int nbLignes = nb_case;
         int nbColonnes = nb_case;
@@ -83,8 +87,6 @@ JOptionPane.showMessageDialog(this,
        JOptionPane.INFORMATION_MESSAGE);
 
     }
-
-
 
 
     /**
@@ -178,18 +180,21 @@ JOptionPane.showMessageDialog(this,
         grille.deplacementHaut();
         System.out.println(grille);
         endroitgrille.repaint();
+        fin_jeu();
     }//GEN-LAST:event_hautActionPerformed
 
     private void gaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaucheActionPerformed
         grille.deplacementGauche();
         System.out.println(grille);
         endroitgrille.repaint();
+        fin_jeu();
     }//GEN-LAST:event_gaucheActionPerformed
 
     private void droiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_droiteActionPerformed
         grille.deplacementDroite();
         System.out.println(grille);
         endroitgrille.repaint();
+        fin_jeu();
     }//GEN-LAST:event_droiteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -201,8 +206,16 @@ JOptionPane.showMessageDialog(this,
         grille.deplacementBas();
         System.out.println(grille);
         endroitgrille.repaint();
+        fin_jeu();
     }//GEN-LAST:event_basActionPerformed
 
+    private void fin_jeu(){
+        if (grille.possible_deplaGauche()==false && grille.possible_deplaDroite()== false && grille.possible_deplaHaut()==false && grille.possible_deplaBas()==false){
+            this.dispose();
+        new FenetreFin().setVisible(true); 
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

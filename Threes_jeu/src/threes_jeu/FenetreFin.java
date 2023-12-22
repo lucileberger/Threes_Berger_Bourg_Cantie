@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Emilie Bourg / Lucile Berger / Pauline Cantie
+ * TDC
+ * 22/12/2023
  */
 package threes_jeu;
 
