@@ -1,7 +1,8 @@
 /*
  * Emilie Bourg / Lucile Berger / Pauline Cantie
  * TDC
- * 28/11/2023
+ * Class grille: affiche la grille et permet de réaliser les actions dans celle-ci
+ * 22/12/2023
  */
 package threes_jeu;
 
@@ -20,7 +21,6 @@ public class Grille {
     /**
      * Permet de créer la grille avec le nombre de colonnes et de lignes voulues
      * et ajoute une cellule dans chaque case
-     *
      * @param ligne nombre de lignes voulues
      * @param colo nombre de colonnes voulues
      */
@@ -35,6 +35,10 @@ public class Grille {
         }
     }
 
+    /**
+     * Permet les déplacement vers la gauche des cellules de la grille
+     * Entraine aussi la fusion à gauche si c'est possible
+     */
     public void deplacementGauche() {
         boolean fusion;
         for (int i = 0; i < nbLignes; i++) {
@@ -62,28 +66,35 @@ public class Grille {
         }
     }
 
-    public void fusionGauche(int i){
+    /**
+     * Permet la fusion des cellules lorsqu'elles se déplacent vers la gauche
+     * @param num_lign pour l'indice de la ligne
+     */
+    public void fusionGauche(int num_lign){
         int f = 0;
-                while (f < nbColonnes - 1 && fusionnable(grillecellule[i][f], grillecellule[i][f + 1]) == false) {
+                while (f < nbColonnes - 1 && fusionnable(grillecellule[num_lign][f], grillecellule[num_lign][f + 1]) == false) {
                     f++;
                 }
-                if (f < nbColonnes - 1 && fusionnable(grillecellule[i][f], grillecellule[i][f + 1]) == true) {
-                    System.out.println(" fusionnable " + i + "," + f);
+                if (f < nbColonnes - 1 && fusionnable(grillecellule[num_lign][f], grillecellule[num_lign][f + 1]) == true) {
+                    System.out.println(" fusionnable " + num_lign + "," + f);
                     for (int l = f; l < nbColonnes - 1; l++) {
-                        grillecellule[i][l].valeur += grillecellule[i][l + 1].valeur;
-                        grillecellule[i][l + 1].valeur = 0;
+                        grillecellule[num_lign][l].valeur += grillecellule[num_lign][l + 1].valeur;
+                        grillecellule[num_lign][l + 1].valeur = 0;
                     }
                 }
     }
     
-    
+    /**
+     * Permet les déplacement vers la droite des cellules de la grille
+     * Entraine aussi la fusion à droite si c'est possible
+     */
     public void deplacementDroite() {
         boolean fusion;
         for (int i = 0; i < nbLignes; i++) {
             fusion = false;
             int j = nbColonnes - 1;
             while (j > 0 && grillecellule[i][j].valeur != 0) {
-                if (j > 1 && fusionnable(grillecellule[i][j], grillecellule[i][j - 1])) {
+                if (j > 0 && fusionnable(grillecellule[i][j], grillecellule[i][j - 1])) {
                     fusion = true;
                 }
                 j--;
@@ -103,21 +114,28 @@ public class Grille {
         }
     }
 
-    public void fusionDroite(int i){
+    /**
+     * Permet la fusion des cellules lorsqu'elles se déplacent vers la droite
+     * @param num_lign pour l'indice de la ligne
+     */
+    public void fusionDroite(int num_lign){
         int f = nbColonnes - 1;
-                while (f > 0 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == false) {
+                while (f > 0 && fusionnable(grillecellule[num_lign][f], grillecellule[num_lign][f - 1]) == false) {
                     f--;
                 }
-                if (f > 1 && fusionnable(grillecellule[i][f], grillecellule[i][f - 1]) == true) {
-                    System.out.println(" fusionnable " + i + "," + f);
-                    for (int l = f; l > 1; l--) {
-                        grillecellule[i][l].valeur += grillecellule[i][l - 1].valeur;
-                        grillecellule[i][l - 1].valeur = 0;
+                if (f > 0 && fusionnable(grillecellule[num_lign][f], grillecellule[num_lign][f - 1]) == true) {
+                    System.out.println(" fusionnable " + num_lign + "," + f);
+                    for (int l = f; l > 0; l--) {
+                        grillecellule[num_lign][l].valeur += grillecellule[num_lign][l - 1].valeur;
+                        grillecellule[num_lign][l - 1].valeur = 0;
                     }
                 }
     }
     
-    
+    /**
+     * Permet les déplacement vers le haut des cellules de la grille
+     * Entraine aussi la fusion en haut si c'est possible
+     */
     public void deplacementHaut() {
         boolean fusion;
         for (int j = 0; j < nbColonnes; j++) {
@@ -144,6 +162,10 @@ public class Grille {
         }
     }
 
+    /**
+     * Permet la fusion des cellules lorsqu'elles se déplacent vers le haut
+     * @param num_colo pour l'indice de la colonne 
+     */
     public void fusionHaut(int num_colo){
         int f = 0;
                 while (f < nbLignes - 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f + 1][num_colo]) == false) {
@@ -158,15 +180,17 @@ public class Grille {
                 }
     }
     
-    
-    
+    /**
+     * Permet les déplacement vers le bas des cellules de la grille
+     * Entraine aussi la fusion en bas si c'est possible
+     */
     public void deplacementBas() {
         boolean fusion;
         for (int j = 0; j < nbColonnes; j++) {
             fusion = false;
             int i = nbLignes - 1;
             while (i > 0 && grillecellule[i][j].valeur != 0) {
-                if (i > 1 && fusionnable(grillecellule[i][j], grillecellule[i - 1][j])) {
+                if (i > 0 && fusionnable(grillecellule[i][j], grillecellule[i - 1][j])) {
                     fusion = true;
                 }
                 i--;
@@ -186,21 +210,30 @@ public class Grille {
         }
     }
 
+    /**
+     * Permet la fusion des cellules lorsqu'elles se déplacent vers le bas
+     * @param num_colo pour l'indice de la colonne
+     */
     public void fusionBas(int num_colo){
         int f = nbLignes - 1;
-                while (f > 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == false) {
+                while (f > 0 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == false) {
                     f--;
                 }
-                if (f > 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == true) {
+                if (f > 0 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == true) {
                     System.out.println(" fusionnable " + f + "," + num_colo);
-                    for (int l = f; l > 1; l--) {
+                    for (int l = f; l > 0; l--) {
                         grillecellule[l][num_colo].valeur += grillecellule[l - 1][num_colo].valeur;
                         grillecellule[l - 1][num_colo].valeur = 0;
                     }
                 }
     }
     
-    
+    /**
+     * permet de savoir si deux cellules peuvent se fusionner 
+     * @param cellu1 première cellule dont la valeur sera comparée pour la fusion
+     * @param cellu2 seconde cellule dont la valeur sera comparée pour la fusion
+     * @return "true" si la fusion est possible et "false" si ça ne l'est pas
+     */
     public boolean fusionnable(Cellule cellu1, Cellule cellu2) {
         if (cellu1.valeur == cellu2.valeur && cellu1.valeur != 1 && cellu1.valeur != 2 && cellu1.valeur != 0) {
             return true;
@@ -212,6 +245,11 @@ public class Grille {
         return false;
     }
     
+    /**
+     * Choisie un nombre aléatoire entre "0", "1", "2" et "3" avec une plus 
+     * grande chance d'obtenir un "0"
+     * @return le nombre 
+     */
     public int valeur_alea (){
         Random nb = new Random();
         int val = nb.nextInt(4);
@@ -219,6 +257,10 @@ public class Grille {
         return val;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String result = "\n\n";
