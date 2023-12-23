@@ -1,11 +1,13 @@
 /*
  * Emilie Bourg / Lucile Berger / Pauline Cantie
  * TDC
+ * Affichage de la fenetre finale, avec le score et la possibilité de rejouer 
  * 22/12/2023
  */
 package threes_jeu;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +15,7 @@ import java.awt.Color;
  */
 public class FenetreFin extends javax.swing.JFrame {
     int Score;
+
 
     /**
      * Creates new form NewJFrame
@@ -26,6 +29,10 @@ public class FenetreFin extends javax.swing.JFrame {
         setSize(525,360);
         setLocationRelativeTo(null);
         jLabel2.setText("Votre score: "+Score);
+        
+        //Classement classement = new Classement();
+        //classement.AjouterScore(score);
+        //ArrayList<Integer> Liste_gagnant = classement.obtenirClassement();
         
     }
 
@@ -70,6 +77,11 @@ public class FenetreFin extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(153, 153, 255));
         jButton3.setFont(new java.awt.Font("Century", 3, 10)); // NOI18N
         jButton3.setText("Classement");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 100, 30));
 
         jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -125,6 +137,21 @@ public class FenetreFin extends javax.swing.JFrame {
         this.dispose();
         new FenetrePrincipale().setVisible(true);     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       // afficherclassement();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    /*public void afficherclassement(){
+
+        StringBuilder message = new StringBuilder("Classement :\n");
+        for (int i = 0; i < Math.min(classement.size(), 10); i++) {
+            message.append((i + 1)).append(". ").append(classement.get(i)).append("\n");
+        }
+
+        JOptionPane.showMessageDialog(this, message.toString(), "Classement", JOptionPane.INFORMATION_MESSAGE);
+    }
+    }*/
+    
     /**
      * @param args the command line arguments
      */

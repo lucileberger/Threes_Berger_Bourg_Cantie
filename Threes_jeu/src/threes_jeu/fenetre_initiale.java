@@ -1,3 +1,9 @@
+/*
+ * Emilie Bourg / Lucile Berger / Pauline Cantie
+ * TDC
+ * Affichage de la fenetre Initiale, pour lancer le jeu et voir les règles
+ * 23/12/2023
+ */
 package threes_jeu;
 
 
