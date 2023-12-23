@@ -177,24 +177,24 @@ JOptionPane.showMessageDialog(this,
     }// </editor-fold>//GEN-END:initComponents
 
     private void hautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hautActionPerformed
+        fin_jeu();
         grille.deplacementHaut();
         System.out.println(grille);
         endroitgrille.repaint();
-        fin_jeu();
     }//GEN-LAST:event_hautActionPerformed
 
     private void gaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaucheActionPerformed
+        fin_jeu();
         grille.deplacementGauche();
         System.out.println(grille);
         endroitgrille.repaint();
-        fin_jeu();
     }//GEN-LAST:event_gaucheActionPerformed
 
     private void droiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_droiteActionPerformed
+        fin_jeu();
         grille.deplacementDroite();
         System.out.println(grille);
         endroitgrille.repaint();
-        fin_jeu();
     }//GEN-LAST:event_droiteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -203,10 +203,10 @@ JOptionPane.showMessageDialog(this,
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void basActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basActionPerformed
+        fin_jeu();
         grille.deplacementBas();
         System.out.println(grille);
         endroitgrille.repaint();
-        fin_jeu();
     }//GEN-LAST:event_basActionPerformed
 
     private void fin_jeu(){
