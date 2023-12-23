@@ -20,7 +20,8 @@ public class Grille {
 
     /**
      * Permet de créer la grille avec le nombre de colonnes et de lignes voulues
-     * et ajoute une cellule dans chaque case
+     * et ajoute une cellule dans chaque case, initialise 9 cases avec des 
+     * cellules à valeur différentes de 0
      * @param ligne nombre de lignes voulues
      * @param colo nombre de colonnes voulues
      */
@@ -28,12 +29,20 @@ public class Grille {
         nbLignes = ligne;
         nbColonnes = colo;
         grillecellule = new Cellule[nbLignes][nbColonnes];
-        for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
-                grillecellule[i][j] = new Cellule(48, 48);
+        int nombre_cell_initial = 0;
+        while (nombre_cell_initial!=9){
+            nombre_cell_initial = 0;
+            for (int i = 0; i < nbLignes; i++) {
+                for (int j = 0; j < nbColonnes; j++) {
+                    grillecellule[i][j] = new Cellule(48, 48);
+                    if (grillecellule[i][j].valeur != 0){
+                        nombre_cell_initial +=1;
+                    }
+                }
             }
         }
     }
+    
 
     /**
      * Vérifie s'il y a encore la possibilité de faire un mouvement vers la 
@@ -177,7 +186,10 @@ public class Grille {
             f++;
         }
         if (f < nbColonnes - 1 && fusionnable(grillecellule[num_lign][f], grillecellule[num_lign][f + 1]) == true) {
+            
             System.out.println(" fusionnable " + num_lign + "," + f);
+            // permet de vérifier sur la console si les fusions fonctionnent
+            
             for (int l = f; l < nbColonnes - 1; l++) {
                 grillecellule[num_lign][l].valeur += grillecellule[num_lign][l + 1].valeur;
                 grillecellule[num_lign][l + 1].valeur = 0;
@@ -222,7 +234,10 @@ public class Grille {
             f--;
         }
         if (f > 0 && fusionnable(grillecellule[num_lign][f], grillecellule[num_lign][f - 1]) == true) {
+            
             System.out.println(" fusionnable " + num_lign + "," + f);
+            // permet de vérifier sur la console si les fusions fonctionnent
+            
             for (int l = f; l > 0; l--) {
                 grillecellule[num_lign][l].valeur += grillecellule[num_lign][l - 1].valeur;
                 grillecellule[num_lign][l - 1].valeur = 0;
@@ -267,7 +282,10 @@ public class Grille {
             f++;
         }
         if (f < nbLignes - 1 && fusionnable(grillecellule[f][num_colo], grillecellule[f + 1][num_colo]) == true) {
-            System.out.println(" fusionnable " + f + "," + num_colo);
+            
+            System.out.println(" fusionnable " + f + "," + num_colo); 
+            // permet de vérifier sur la console si les fusions fonctionnent
+            
             for (int l = f; l < nbLignes - 1; l++) {
                 grillecellule[l][num_colo].valeur += grillecellule[l + 1][num_colo].valeur;
                 grillecellule[l + 1][num_colo].valeur = 0;
@@ -312,7 +330,10 @@ public class Grille {
             f--;
         }
         if (f > 0 && fusionnable(grillecellule[f][num_colo], grillecellule[f - 1][num_colo]) == true) {
+            
             System.out.println(" fusionnable " + f + "," + num_colo);
+            // permet de vérifier sur la console si les fusions fonctionnent
+            
             for (int l = f; l > 0; l--) {
                 grillecellule[l][num_colo].valeur += grillecellule[l - 1][num_colo].valeur;
                 grillecellule[l - 1][num_colo].valeur = 0;
