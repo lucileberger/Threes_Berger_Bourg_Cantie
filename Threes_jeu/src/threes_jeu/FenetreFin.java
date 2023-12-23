@@ -8,6 +8,9 @@ package threes_jeu;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -15,6 +18,7 @@ import java.util.ArrayList;
  */
 public class FenetreFin extends javax.swing.JFrame {
     int Score;
+    private Classement classement;
 
 
     /**
@@ -29,10 +33,7 @@ public class FenetreFin extends javax.swing.JFrame {
         setSize(525,360);
         setLocationRelativeTo(null);
         jLabel2.setText("Votre score: "+Score);
-        
-        //Classement classement = new Classement();
-        //classement.AjouterScore(score);
-        //ArrayList<Integer> Liste_gagnant = classement.obtenirClassement();
+        classement = new Classement();
         
     }
 
@@ -49,7 +50,7 @@ public class FenetreFin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        Liste_gagnant = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -74,15 +75,15 @@ public class FenetreFin extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(69, 40));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 330, 60));
 
-        jButton3.setBackground(new java.awt.Color(153, 153, 255));
-        jButton3.setFont(new java.awt.Font("Century", 3, 10)); // NOI18N
-        jButton3.setText("Classement");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Liste_gagnant.setBackground(new java.awt.Color(153, 153, 255));
+        Liste_gagnant.setFont(new java.awt.Font("Century", 3, 10)); // NOI18N
+        Liste_gagnant.setText("Classement");
+        Liste_gagnant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Liste_gagnantActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 100, 30));
+        jPanel2.add(Liste_gagnant, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 100, 30));
 
         jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jButton2.setText("REJOUER");
@@ -137,20 +138,23 @@ public class FenetreFin extends javax.swing.JFrame {
         this.dispose();
         new FenetrePrincipale().setVisible(true);     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       // afficherclassement();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    /*public void afficherclassement(){
-
+    private void Liste_gagnantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Liste_gagnantActionPerformed
+       Classement classement = new Classement();
+    classement.ajouterScore(Score); 
+    ArrayList<Scorejoueur> classementActuel = classement.obtenirClassement();
+    for (Scorejoueur scoreJoueur : classementActuel) {
+        System.out.println(scoreJoueur);
+    }
         StringBuilder message = new StringBuilder("Classement :\n");
-        for (int i = 0; i < Math.min(classement.size(), 10); i++) {
-            message.append((i + 1)).append(". ").append(classement.get(i)).append("\n");
+        for (int i = 0; i < Math.min(classementActuel.size(), 10); i++) {
+            message.append((i + 1)).append(". ").append(classementActuel.get(i)).append("\n");
         }
 
         JOptionPane.showMessageDialog(this, message.toString(), "Classement", JOptionPane.INFORMATION_MESSAGE);
-    }
-    }*/
+
+    
+    }//GEN-LAST:event_Liste_gagnantActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -189,9 +193,9 @@ public class FenetreFin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Liste_gagnant;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

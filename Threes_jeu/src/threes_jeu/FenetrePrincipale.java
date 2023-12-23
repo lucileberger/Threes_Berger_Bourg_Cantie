@@ -6,8 +6,6 @@
  */
 package threes_jeu;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -73,19 +71,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         }
     }
 
-    public void fleches() {
-        String message
-                = "<html><body style='width: 300px; padding: 10px;'>"
-                + "<h1 style='color: #1E90FF; font-style: italic;'>Utilisez les flèches sur l'interface graphique ou sur le clavier pour jouer.</h1>"
-                + "</body></html>";
-
-        JOptionPane.showMessageDialog(this,
-                message,
-                "Utilisation des flèches",
-                JOptionPane.INFORMATION_MESSAGE);
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,10 +86,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         droite = new javax.swing.JButton();
         gauche = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(850, 316));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         endroitgrille.setBackground(new java.awt.Color(204, 204, 204));
@@ -113,7 +101,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         endroitgrille.setLayout(endroitgrilleLayout);
         endroitgrilleLayout.setHorizontalGroup(
             endroitgrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 270, Short.MAX_VALUE)
         );
         endroitgrilleLayout.setVerticalGroup(
             endroitgrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,13 +151,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(gauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 50, 50));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, -1, -1));
 
-        jButton1.setText("utilisation des flèches ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, -1, -1));
+        jLabel2.setText("Vous pouvez aussi jouer avec les flèches du clavier ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 290, 30));
+
+        jLabel3.setText("Si vous touchez aux flèches ci-dessus le clavier se désactivera");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, -1));
+
+        jLabel4.setText("ATTENTION!!");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,11 +183,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         System.out.println(grille);
         endroitgrille.repaint();
     }//GEN-LAST:event_droiteActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.fleches();
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void basActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basActionPerformed
         fin_jeu();
@@ -260,7 +244,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel endroitgrille;
     private javax.swing.JButton gauche;
     private javax.swing.JButton haut;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
