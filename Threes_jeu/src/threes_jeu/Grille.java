@@ -2,7 +2,7 @@
  * Emilie Bourg / Lucile Berger / Pauline Cantie
  * TDC
  * Class grille: affiche la grille et permet de réaliser les actions dans celle-ci
- * 22/12/2023
+ * 23/12/2023
  */
 package threes_jeu;
 
@@ -156,11 +156,8 @@ public class Grille {
             }
             // un trou a été découvert
             if (j != nbColonnes && grillecellule[i][j].valeur == 0) {
-                //System.out.println(" trou découvert " + i + ","+j);
                 for (int k = j; k < nbColonnes - 1; k++) {
-                    //System.out.println("décalage numero "+ k);
                     grillecellule[i][k].valeur = grillecellule[i][k + 1].valeur;
-                    //System.out.println(this);
                 }
                 grillecellule[i][nbColonnes - 1].valeur = valeur_alea();
             }
@@ -202,13 +199,10 @@ public class Grille {
                     fusion = true;
                 }
                 j--;
-            }
+            } //trou découvert:
             if (j != 0 && grillecellule[i][j].valeur == 0) {
-                //System.out.println("trou découvert " + i + "," + j);
                 for (int k = j; k > 0; k--) {
-                    //System.out.println("décalage numero " + k);
                     grillecellule[i][k].valeur = grillecellule[i][k - 1].valeur;
-                    //System.out.println(this);
                 }
                 grillecellule[i][0].valeur = valeur_alea();
             }
@@ -250,13 +244,10 @@ public class Grille {
                     fusion = true;
                 }
                 i++;
-            }
+            } //trou découvert:
             if (i != nbLignes - 1 && grillecellule[i][j].valeur == 0) {
-                //System.out.println("trou découvert " + i + "," + j);
                 for (int k = i; k < nbLignes - 1; k++) {
-                    //System.out.println("décalage numero " + k);
                     grillecellule[k][j].valeur = grillecellule[k + 1][j].valeur;
-                    //System.out.println(this);
                 }
                 grillecellule[nbLignes - 1][j].valeur = valeur_alea();
             }
@@ -298,13 +289,10 @@ public class Grille {
                     fusion = true;
                 }
                 i--;
-            }
+            } // trou découvert:
             if (i != 0 && grillecellule[i][j].valeur == 0) {
-                //System.out.println("trou découvert " + i + "," + j);
                 for (int k = i; k > 0; k--) {
-                    //System.out.println("décalage numero " + k);
                     grillecellule[k][j].valeur = grillecellule[k - 1][j].valeur;
-                    //System.out.println(this);
                 }
                 grillecellule[0][j].valeur = valeur_alea();
             }
@@ -362,6 +350,11 @@ public class Grille {
         return val;
     }
     
+    /**
+     * Compte le score d'une cellule grâce à sa valeur
+     * @param cellule dont on veut le score
+     * @return Le score obtenu grâce à la cellule
+     */
     public int score (Cellule cellule){
        if (cellule.valeur==1 || cellule.valeur==2){
            return 0;
@@ -375,6 +368,10 @@ public class Grille {
        return (int) Math.pow(3, puissance);
     }
     
+    /**
+     * Compte le score total obtenu avec toutes les cellules de la grille
+     * @return le score total
+     */
     public int compte_score (){
         int score_tot=0;
         for (int i=0; i<nbLignes; i++){
@@ -385,7 +382,10 @@ public class Grille {
         return score_tot;
     }
 
-
+    /**
+     * Permet d'afficher la grille dans la console
+     * @return l'affichage de la grille
+     */
     @Override
     public String toString() {
         String result = "\n\n";

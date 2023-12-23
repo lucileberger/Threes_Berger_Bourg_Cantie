@@ -1,7 +1,8 @@
 /*
  * Emilie Bourg / Lucile Berger / Pauline Cantie
  * TDC
- * 28/11/2023
+ * Affichage de la fenetre principale, la fenetre de jeu
+ * 23/12/2023
  */
 package threes_jeu;
 
@@ -13,15 +14,14 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Fenetre avec son attribut, la grille de jeu
  * @author Emilie
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
-
     Grille grille;
 
     /**
-     * Creates new form FenetrePrincipale
+     * Constructeur de la fenetre principale
      */
     public FenetrePrincipale() {
         initComponents();
@@ -30,7 +30,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         System.out.println(grille);
         setLocationRelativeTo(null);
         setSize(800, 500);
-
+        
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -206,6 +206,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         endroitgrille.repaint();
     }//GEN-LAST:event_basActionPerformed
 
+    /**
+     * Affiche la fenetre de fin lorsque aucun déplacement n'est possible
+     */
     public void fin_jeu() {
         if (grille.possible_deplaGauche() == false && grille.possible_deplaDroite() == false && grille.possible_deplaHaut() == false && grille.possible_deplaBas() == false) {
             int score;
