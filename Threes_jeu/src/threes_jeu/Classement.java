@@ -11,18 +11,25 @@ import java.util.Collections;
 import java.io.*;
 
 /**
- *
+ * Crée un classement des meilleurs joueurs
  * @author Emilie
  */
 public class Classement {
     ArrayList<Scorejoueur> scoresGagnants;
     String fichierClassement = "classement.txt";
 
+    /**
+     * recupère le classement enregistrer sur un fichier et le met dans une liste
+     */
     public Classement() {
         scoresGagnants = new ArrayList<>();
         recupererScore();
     }
 
+    /**
+     * Ajoute un score au classement
+     * @param nouveauScore à ajouter au classement
+     */
     public void ajouterScore(int nouveauScore) {
     if (nouveauScore > 0) {
         System.out.println("Taille de scoresGagnants : " + scoresGagnants.size());
@@ -38,6 +45,10 @@ public class Classement {
     }
 }
 
+    /**
+     * Pour obtenir les scores reliers aux joueurs
+     * @return les scores des joueurs
+     */
     public ArrayList<Scorejoueur> obtenirClassement() {
         return scoresGagnants;
     }
@@ -77,4 +88,5 @@ public class Classement {
         return "Anonyme";
     }
 }
+
 }

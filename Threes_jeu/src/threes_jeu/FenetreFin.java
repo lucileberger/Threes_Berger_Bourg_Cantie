@@ -139,12 +139,12 @@ public class FenetreFin extends javax.swing.JFrame {
         new FenetrePrincipale().setVisible(true);     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Liste_gagnantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Liste_gagnantActionPerformed
-       Classement classement = new Classement();
-    classement.ajouterScore(Score); 
-    ArrayList<Scorejoueur> classementActuel = classement.obtenirClassement();
+       classement.ajouterScore(Score); 
+    ArrayList<Scorejoueur> classementActuel = this.classement.obtenirClassement();
     for (Scorejoueur scoreJoueur : classementActuel) {
         System.out.println(scoreJoueur);
     }
+    //ArrayList<Scorejoueur> classement = this.classement.obtenirClassement();
         StringBuilder message = new StringBuilder("Classement :\n");
         for (int i = 0; i < Math.min(classementActuel.size(), 10); i++) {
             message.append((i + 1)).append(". ").append(classementActuel.get(i)).append("\n");
