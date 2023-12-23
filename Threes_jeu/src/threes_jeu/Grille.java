@@ -361,6 +361,29 @@ public class Grille {
         val = val * nb.nextInt(2);
         return val;
     }
+    
+    public int score (Cellule cellule){
+       if (cellule.valeur==1 || cellule.valeur==2){
+           return 0;
+       } 
+       int nb = cellule.valeur;
+       int puissance=1;
+       while (nb!=3){
+           nb=nb/2;
+           puissance+=1;
+       }
+       return (int) Math.pow(3, puissance);
+    }
+    
+    public int compte_score (){
+        int score_tot=0;
+        for (int i=0; i<nbLignes; i++){
+            for (int j=0; j<nbColonnes; j++){
+                score_tot+=score(grillecellule[i][j]);
+            }
+        }
+        return score_tot;
+    }
 
 
     @Override

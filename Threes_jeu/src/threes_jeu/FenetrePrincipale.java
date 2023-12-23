@@ -17,22 +17,21 @@ import javax.swing.JOptionPane;
  * @author Emilie
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
-        Grille grille;
+
+    Grille grille;
 
     /**
      * Creates new form FenetrePrincipale
      */
-      public FenetrePrincipale() {
+    public FenetrePrincipale() {
         initComponents();
         setTitle("Bienvenue dans le jeu Threes!");
-        créer_grille(4,80,80);
+        créer_grille(4, 80, 80);
         System.out.println(grille);
         setLocationRelativeTo(null);
         setSize(800, 500);
-        
- 
-     
-     addKeyListener(new KeyAdapter() {
+
+        addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -48,46 +47,44 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-    
+
     }
 
     /**
-     * Permet la création de la grille dans la fenetre 
+     * Permet la création de la grille dans la fenetre
+     *
      * @param nb_case par lignes et colonnes
      * @param taille_grille
      * @param taille_cellule
      */
-    public void créer_grille(int nb_case, int taille_grille, int taille_cellule){
+    public void créer_grille(int nb_case, int taille_grille, int taille_cellule) {
         int nbLignes = nb_case;
         int nbColonnes = nb_case;
-        getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(taille_grille, taille_grille, nbColonnes*taille_cellule, nbLignes*taille_cellule));
+        getContentPane().add(endroitgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(taille_grille, taille_grille, nbColonnes * taille_cellule, nbLignes * taille_cellule));
         this.pack();
         this.revalidate();
-        grille=new Grille(nbLignes,nbColonnes);
+        grille = new Grille(nbLignes, nbColonnes);
         endroitgrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        
-        for (int i=0; i < nbLignes; i++) { 
-            for (int j=0; j < nbColonnes; j++ ) {
-                endroitgrille.add(grille.grillecellule[i][j]); 
+
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                endroitgrille.add(grille.grillecellule[i][j]);
             }
         }
     }
-    
-    
-    public void fleches (){
-        String message =
-        "<html><body style='width: 300px; padding: 10px;'>" +
-                "<h1 style='color: #1E90FF; font-style: italic;'>Utilisez les flèches sur l'interface graphique ou sur le clavier pour jouer.</h1>" +
-                
-                "</body></html>";
 
-JOptionPane.showMessageDialog(this,
-        message,
-        "Utilisation des flèches",
-       JOptionPane.INFORMATION_MESSAGE);
+    public void fleches() {
+        String message
+                = "<html><body style='width: 300px; padding: 10px;'>"
+                + "<h1 style='color: #1E90FF; font-style: italic;'>Utilisez les flèches sur l'interface graphique ou sur le clavier pour jouer.</h1>"
+                + "</body></html>";
+
+        JOptionPane.showMessageDialog(this,
+                message,
+                "Utilisation des flèches",
+                JOptionPane.INFORMATION_MESSAGE);
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,7 +196,7 @@ JOptionPane.showMessageDialog(this,
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.fleches();
-     
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void basActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basActionPerformed
@@ -209,13 +206,15 @@ JOptionPane.showMessageDialog(this,
         endroitgrille.repaint();
     }//GEN-LAST:event_basActionPerformed
 
-    private void fin_jeu(){
-        if (grille.possible_deplaGauche()==false && grille.possible_deplaDroite()== false && grille.possible_deplaHaut()==false && grille.possible_deplaBas()==false){
+    public void fin_jeu() {
+        if (grille.possible_deplaGauche() == false && grille.possible_deplaDroite() == false && grille.possible_deplaHaut() == false && grille.possible_deplaBas() == false) {
+            int score;
+            score = grille.compte_score();
             this.dispose();
-        new FenetreFin().setVisible(true); 
+            new FenetreFin(score).setVisible(true);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */

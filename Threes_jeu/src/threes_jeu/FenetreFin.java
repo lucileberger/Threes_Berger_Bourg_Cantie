@@ -12,17 +12,20 @@ import java.awt.Color;
  * @author canti
  */
 public class FenetreFin extends javax.swing.JFrame {
+    int Score;
 
     /**
      * Creates new form NewJFrame
+     * @param score
      */
-    public FenetreFin() {
+    public FenetreFin(int score) {
+        Score = score;
         initComponents();
         jButton1.setBackground(new Color(153,204,255));
         jButton2.setBackground(new Color(153,204,255));
         setSize(525,360);
         setLocationRelativeTo(null);
-
+        jLabel2.setText("Votre score: "+Score);
         
     }
 
@@ -62,7 +65,7 @@ public class FenetreFin extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(69, 30));
         jLabel2.setMinimumSize(new java.awt.Dimension(69, 30));
         jLabel2.setPreferredSize(new java.awt.Dimension(69, 40));
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 260, 60));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 330, 60));
 
         jButton3.setBackground(new java.awt.Color(153, 153, 255));
         jButton3.setFont(new java.awt.Font("Century", 3, 10)); // NOI18N
@@ -153,7 +156,7 @@ public class FenetreFin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetreFin().setVisible(true);
+                new FenetreFin(0).setVisible(true);
             }
         });
     }
